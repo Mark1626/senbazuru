@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied"
+    echo "Usage daily <n>"
+    echo "n - number of cranes"
+  else
+    echo "\n`date +%F`\t$1" >> senbazuru.txt
+    ./burndown senbazuru.txt > burndown.txt
+fi

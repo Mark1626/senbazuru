@@ -1,0 +1,10 @@
+#!/usr/bin/awk -f
+
+BEGIN {
+  total = 1000
+}
+
+{
+  total = total - $2
+  printf "%s\t%d\n", $1, total
+}
