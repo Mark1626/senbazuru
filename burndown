@@ -1,10 +1,23 @@
 #!/usr/bin/awk -f
 
 BEGIN {
-  total = 1000
+  actual = 1000
+  expected = 1000
+  burn = 30
+  timestamp = 0
 }
 
 {
-  total = total - $2
-  printf "%s\t%d\n", $1, total
+  actual -= $2
+  expected -= burn
+  timestamp = $1
+  printf "%s\t%d\t%d\n", $1, actual, expected
+}
+
+END {
+  while (expected > burn) {
+    timestamp += 86400
+    expected -= burn
+    printf "%s\t%d\t%d\n", timestamp, -1, expected
+  }
 }

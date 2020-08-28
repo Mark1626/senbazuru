@@ -1,14 +1,16 @@
 const parseLog = (content) => {
   const timeRange = [];
   const countRange = [];
+  const expectedRange = [];
   content.split("\n").forEach((line) => {
     if (line) {
-      const [timestamp, count] = line.split("\t");
-      countRange.push(count);
+      const [timestamp, count, expected] = line.split("\t");
       timeRange.push(timestamp);
+      count >=0 && countRange.push(count);
+      expectedRange.push(expected);
     }
   });
-  return [timeRange, countRange];
+  return [timeRange, countRange, expectedRange];
 };
 
 let data = [
@@ -25,7 +27,7 @@ const readLog = async () => {
   reader.readAsText(content, "UTF-8");
   reader.onload = (evt) => {
     data = parseLog(evt.target.result);
-    new uPlot(opts, data, document.body);
+    new uPlot(opts, data, document.getElementById("graph"));
   };
 };
 
@@ -40,28 +42,20 @@ let opts = {
   series: [
     {},
     {
-      // initial toggled state (optional)
-      show: true,
       spanGaps: false,
-      // in-legend display
       label: "Count",
-      // value: (self, rawValue) => rawValue + "C",
-
       scale: "y",
-      // series style
       stroke: "red",
-      width: 1,
-      fill: "rgba(255, 0, 0, 0.3)",
-      dash: [10, 5],
+      fill: "rgba(0, 255, 0, 0.3)",
+    },
+    {
+      spanGaps: false,
+      label: "Expected Count",
+      scale: "y",
+      stroke: "blue",
+      fill: "rgba(0, 0, 255, 0)",
     },
   ],
-  // axes: [
-  //   {},
-  //   {
-  //     scale: "y",
-  //     // values: (self, ticks) => ticks.map(rawValue => rawValue.toFixed(1) + "%"),
-  //   },
-  // ],
   scales: {
     "y": {
       auto: false,
