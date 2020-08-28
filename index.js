@@ -1,16 +1,14 @@
-const getUnixTime = (day) => new Date(day).getTime() / 1000;
-
 const parseLog = (content) => {
-  const dateRange = [];
+  const timeRange = [];
   const countRange = [];
   content.split("\n").forEach((line) => {
     if (line) {
-      const [day, count] = line.split("\t");
+      const [timestamp, count] = line.split("\t");
       countRange.push(count);
-      dateRange.push(getUnixTime(day));
+      timeRange.push(timestamp);
     }
   });
-  return [dateRange, countRange];
+  return [timeRange, countRange];
 };
 
 let data = [
