@@ -6,6 +6,6 @@ if [ $# -eq 0 ]
     echo "Usage daily <n>"
     echo "n - number of cranes"
   else
-    echo "\n`date +%F`\t$1" >> senbazuru.txt
+    echo "\n$(date +%F)\t$1\c" -n >> senbazuru.txt
     ./burndown senbazuru.txt > burndown.txt
 fi
