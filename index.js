@@ -6,7 +6,7 @@ const parseLog = (content) => {
     if (line) {
       const [timestamp, count, expected] = line.split("\t");
       timeRange.push(timestamp);
-      count >=0 && countRange.push(count);
+      count >= 0 && countRange.push(count);
       expectedRange.push(expected);
     }
   });
@@ -19,7 +19,7 @@ let data = [
   [90, 15], // y-values (series 2)
 ];
 
-const readLog = async () => {
+const populateGraph = async () => {
   const reader = new FileReader();
   const file = await fetch("./burndown.txt");
   const content = await file.blob();
@@ -30,8 +30,6 @@ const readLog = async () => {
     new uPlot(opts, data, document.getElementById("graph"));
   };
 };
-
-readLog();
 
 let opts = {
   title: "Senbazuru Progress",
@@ -57,9 +55,33 @@ let opts = {
     },
   ],
   scales: {
-    "y": {
+    y: {
       auto: false,
       range: [0, 1000],
-    }
+    },
   },
 };
+
+// Progress list
+const populateAchievement = async () => {
+  const progress = document.getElementById("progress");
+  const ul = document.createElement("ul");
+
+  const reader = new FileReader();
+  const file = await fetch("./achievements.txt");
+  const content = await file.blob();
+
+  reader.readAsText(content, "UTF-8");
+  reader.onload = (evt) => {
+    const textContent = evt.target.result;
+    textContent.split("\n").forEach((line) => {
+      const [date, desc] = line.split("\t");
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="date">${date}</span><span class="desc">${desc}</span>`;
+      ul.appendChild(li);
+    });
+  };
+  progress.appendChild(ul);
+};
+
+Promise.all([populateGraph(), populateAchievement()]);

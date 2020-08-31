@@ -1,8 +1,41 @@
+@media only screen and (min-width: 1000px) {
+  body {
+    width: 80vw;
+    margin: auto;
+  }
+}
+
 body {
-  width: 80vw;
-  margin: auto;
+  font-family: Futura, Arial, Helvetica, sans-serif;
 }
 
 .my-chart {
   margin: auto;
+}
+
+#progress {
+  margin: auto;
+  min-width: 400px;
+  max-width: 800px;
+  padding: 20px 100px;
+}
+
+#progress h3 {
+  text-align: center;
+}
+
+#progress ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-block-start: 0;
+  padding-inline-start: 0;
+}
+
+#progress ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50px;
+  line-height: 50px;
 }
