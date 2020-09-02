@@ -1,2 +1,3 @@
 2020-08-28	Made the first two strings
 2020-08-31	Hit the 250 crane checkmark
+2020-09-03	3rd and 4th strings made
