@@ -2,7 +2,7 @@
 
 BEGIN {
   actual = 1000
-  expected = 1000
+  expected = 970
   burn = 30
   expected_timestamp = 100000
   timestamp = 0
