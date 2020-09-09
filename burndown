@@ -4,13 +4,20 @@ BEGIN {
   actual = 1000
   expected = 1000
   burn = 30
+  expected_timestamp = 100000
   timestamp = 0
 }
 
 {
-  actual -= $2
-  expected -= burn
+  if(timestamp == 0) {
+    expected_timestamp = $1
+  }
   timestamp = $1
+  actual -= $2
+  if (expected_timestamp < timestamp) {
+    expected_timestamp += 86400
+    expected -= burn
+  }
   printf "%s\t%d\t%d\n", $1, actual, expected
 }
 
