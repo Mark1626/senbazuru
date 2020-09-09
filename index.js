@@ -5,19 +5,13 @@ const parseLog = (content) => {
   content.split("\n").forEach((line) => {
     if (line) {
       const [timestamp, count, expected] = line.split("\t");
-      timeRange.push(timestamp);
-      count >= 0 && countRange.push(count);
-      expectedRange.push(expected);
+      timeRange.push(Number(timestamp));
+      count >= 0 && countRange.push(Number(count));
+      expectedRange.push(Number(expected));
     }
   });
   return [timeRange, countRange, expectedRange];
 };
-
-let data = [
-  [1546300800, 1546387200], // x-values (timestamps)
-  [35, 71], // y-values (series 1)
-  [90, 15], // y-values (series 2)
-];
 
 const populateGraph = async () => {
   const reader = new FileReader();
@@ -26,7 +20,7 @@ const populateGraph = async () => {
 
   reader.readAsText(content, "UTF-8");
   reader.onload = (evt) => {
-    data = parseLog(evt.target.result);
+    const data = parseLog(evt.target.result);
     new uPlot(opts, data, document.getElementById("graph"));
   };
 };
