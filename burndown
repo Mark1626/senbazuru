@@ -14,7 +14,7 @@ BEGIN {
   }
   timestamp = $1
   actual -= $2
-  if (expected_timestamp < timestamp) {
+  while (expected_timestamp < timestamp) {
     expected_timestamp += 86400
     expected -= burn
   }
