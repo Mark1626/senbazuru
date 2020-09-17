@@ -6,4 +6,5 @@
 2020-09-15	200 cranes remaining
 2020-09-16	6 strings remaining
 2020-09-17	Last 100 cranes
-
+2020-09-17  Add missing 15 cranes
+2020-09-17	Last 50 cranes
