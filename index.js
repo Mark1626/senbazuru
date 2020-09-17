@@ -70,9 +70,11 @@ const populateAchievement = async () => {
     const textContent = evt.target.result;
     textContent.split("\n").forEach((line) => {
       const [date, desc] = line.split("\t");
-      const li = document.createElement("li");
-      li.innerHTML = `<span class="date">${date}</span><span class="desc">${desc}</span>`;
-      ul.appendChild(li);
+      if (date && desc) {
+        const li = document.createElement("li");
+        li.innerHTML = `<span class="date">${date}</span><span class="desc">${desc}</span>`;
+        ul.appendChild(li);
+      }
     });
   };
   progress.appendChild(ul);

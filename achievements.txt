@@ -4,4 +4,6 @@
 2020-09-09	Made it to 10 strings
 2020-09-09	Hit the 500 crane checkmark
 2020-09-15	200 cranes remaining
-2020-09-15	6 strings remaining
+2020-09-16	6 strings remaining
+2020-09-17	Last 100 cranes
+
