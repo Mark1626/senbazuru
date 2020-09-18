@@ -8,3 +8,6 @@
 2020-09-17	Last 100 cranes
 2020-09-17  Add missing 15 cranes
 2020-09-17	Last 50 cranes
+2020-09-17	Add miss counted 15
+2020-09-17	Last crane done
+2020-09-17	Last string done
