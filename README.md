@@ -1,5 +1,9 @@
 # Senbazuru
 
+## Final
+
+![Senbazuru Assembled](./senbazuru_assembled.jpg)
+
 ## Live At
 
 https://mark1626.github.io/senbazuru/
